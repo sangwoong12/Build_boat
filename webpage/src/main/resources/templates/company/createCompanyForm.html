@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form role="form" action="/company/new" th:object="${companyform}" method="post">
+        <div class="form-group">
+            <label th:for="companyName">회사명</label>
+            <input type="text" th:field="*{companyName}" class="form-control" placeholder="회사명을 입력하세요" th:class="${#fields.hasErrors('companyName')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}">Incorrect date</p>
+        </div>
+        <div class="form-group">
+            <label th:for="companyRegistrationNumber">사업자 번호</label>
+            <input type="text" th:field="*{companyRegistrationNumber}" class="form-control" placeholder="사업자번호를 입력하세요" th:class="${#fields.hasErrors('companyRegistrationNumber')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('companyRegistrationNumber')}" th:errors="*{companyRegistrationNumber}">Incorrect date</p>
+        </div>
+        <div class="form-group">
+            <label th:for="companyLocation">위치</label>
+            <input type="text" th:field="*{companyLocation}" class="form-control" placeholder="위치를 입력하세요" th:class="${#fields.hasErrors('companyLocation')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('companyLocation')}" th:errors="*{companyLocation}">Incorrect date</p>
+        </div>
+        <div class="form-group">
+            <label th:for="companySite">사이트</label>
+            <input type="text" th:field="*{companySite}" class="form-control" placeholder="사이트를 입력하세요" th:class="${#fields.hasErrors('companySite')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('companySite')}" th:errors="*{companySite}">Incorrect date</p>
+        </div>
+        <button type="submit" class="btn btn-primary">등록하기</button>
+    </form>
+    <br/>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
